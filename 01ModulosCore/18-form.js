@@ -21,9 +21,10 @@ function webServer(req, res) {
                 var dataObject = querystring.parse(dataString), //Obtendremos un objeto con querystring.parse
                     dataJSON = util.inspect(dataObject), //inspect devuelve una cadena de texto de un objeto
                     //Declaramos una variable de texto
-                    templateString = `
-Los datos que enviaste por POST como string son: ${dataString}
-Los datos que enviaste por POST como JSON son: ${dataJSON}
+
+                    templateString =  `
+                    Los datos que enviaste por POST como string son: ${dataString}
+                    Los datos que enviaste por POST como JSON son: ${dataJSON}
                     `
                 console.log(templateString)
                 res.end(templateString) //Es lo que enviará al navegador web
