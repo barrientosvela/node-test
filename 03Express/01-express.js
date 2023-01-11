@@ -11,13 +11,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
 
 //Peticiones básicas HTTP
-app.get('/', (req, res) => {
-    res.render("index", {titulo : "mi titulo dinamico"})
-  })
-
-app.get('/contacto', (req, res) => {
-    res.render("contacto", {tituloContacto : "mi titulo dinamico de contacto"})
-})
+app.use('/', require('./router/rutas'))
+app.use('/pokemon', require('./router/pokemon'))
 
 app.use((req,res) => {
     res.status(404).render("404", {
