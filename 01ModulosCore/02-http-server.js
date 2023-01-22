@@ -15,6 +15,8 @@
 
 var http = require('http') // Con require vamos a llamar al módulo interno de Node en cuestión. 
 
+const hostname = '127.0.0.1';
+
 function webServer(req, res)
 {
 // En este caso, no será texto plano. Vamos a enviar código HTML
@@ -23,6 +25,6 @@ function webServer(req, res)
 
 http
     .createServer(webServer)
-    .listen(3000, 'localhost')
+    .listen(3000, hostname)
 
-console.log('Servidor corriendo en http://localhost:3000/')
+console.log(`Servidor corriendo en http://${hostname}:3000/`)
