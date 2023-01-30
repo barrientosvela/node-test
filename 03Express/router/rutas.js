@@ -1,4 +1,5 @@
-const express = require('express') //Requerimos Express
+const express = require('express'); //Requerimos Express
+const Pokemon = require('../models/pokemon');
 const router = express.Router();
 
 // Ahora, CORTAMOS del fichero principal 01-express.js
@@ -7,11 +8,25 @@ const router = express.Router();
 // Importante que ya no usaremos el app.get(...), ahora
 //vamos a utilizar las rutas, por lo que deberemos poner:
 router.get('/', (req, res) => {
-    res.render("index", { titulo: "mi titulo dinámico" })
+    res.render("index", { titulo: "Mini aplicación con Node.js y MongoDB" })
 })
 
 router.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
 })
+router.get('/crear', (req, res) => {
+    res.render('crear'); //nueva vista que llamaremos Crear
+})
+router.post('/', async (req, res) => {
+    const body = req.body
+    try{
+        const pokemonDB = new Pokemon(body)
+        await pokemonDB.save()
+        res.redirect('/pokemon')
+    } catch (error) {
+        console.log('Error: ', error)
+    }
+})
+
 // Por último, vamos a exportarlo:
 module.exports = router;
