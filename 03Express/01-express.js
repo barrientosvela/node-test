@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const path = require('path');
 require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -26,13 +27,15 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
 app.use('/pokemon', require('./router/pokemon'))
 app.use('/entrenador', require('./router/entrenador'))
 
-
+//Peticion al paht imagenes
+app.get('/images/:file', (req, res) => {
+  res.sendFile(path.join(__dirname, 'images', req.params.file));
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -3,6 +3,7 @@ const Pokemon = require('../models/pokemon');
 const Entrenador = require('../models/entrenador')
 const router = express.Router();
 
+
 // Ahora, CORTAMOS del fichero principal 01-express.js
 // las dos rutas que tenemos: la principal ( / ) y la 
 // de contactos ( /contaco )
@@ -11,7 +12,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.render("index", { titulo: "Mini aplicación con Node.js y MongoDB" })
 })
-
 router.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
 })

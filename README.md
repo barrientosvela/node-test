@@ -1,5 +1,7 @@
 # node-test
 
-# index con enlaces a cada cosa
-# crear el crud para entrenador
-# control de los campos con expresiones regulares
+# La aplicación se encuentra en la carpeta 03Express
+
+# He creado un crud para un nuevo modelo de Entrenadores Pokémon
+# He mejorado el código haciendo un index con enlaces para navegar entre páginas
+# Mejora de las vista e inclusion de peticiones HTTP para las rutas de las imagenes
