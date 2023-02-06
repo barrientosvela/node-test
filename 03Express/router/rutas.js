@@ -1,5 +1,6 @@
 const express = require('express'); //Requerimos Express
 const Pokemon = require('../models/pokemon');
+const Entrenador = require('../models/entrenador')
 const router = express.Router();
 
 // Ahora, CORTAMOS del fichero principal 01-express.js
@@ -14,15 +15,23 @@ router.get('/', (req, res) => {
 router.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); //nueva vista que llamaremos Crear
-})
+
 router.post('/', async (req, res) => {
     const body = req.body
-    try{
+    try {
         const pokemonDB = new Pokemon(body)
         await pokemonDB.save()
         res.redirect('/pokemon')
+    } catch (error) {
+        console.log('Error: ', error)
+    }
+})
+router.post('/', async (req, res) => {
+    const body = req.body
+    try {
+        const entrenadorDB = new Entrenador(body)
+        await entrenadorDB.save()
+        res.redirect('/entrenador')
     } catch (error) {
         console.log('Error: ', error)
     }

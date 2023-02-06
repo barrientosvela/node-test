@@ -2,9 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 require('dotenv').config()
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-const port = process.env.PORT || 3005
+const port = process.env.PORT
 
 //Conexión a base de datos
 const mongoose = require('mongoose');
@@ -30,6 +30,7 @@ app.set('view engine', 'ejs');
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
 app.use('/pokemon', require('./router/pokemon'))
+app.use('/entrenador', require('./router/entrenador'))
 
 
 

@@ -1,5 +1,13 @@
 <%- include("template/cabecera.ejs", {tituloWeb: "Inicio" })%>
 
-    <h2 class="text-center p-5"><%= titulo %></h2>
+    <h2 class="text-center p-5">
+        <%= titulo %>
+    </h2>
 
-<%- include("template/footer.ejs")%>
+    <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+        <a href="/pokemon"><button class="btn btn-primary">Pokémon</button></a>
+        <a href="/entrenador"><button class="btn btn-primary">Entrenadores</button></a>
+    </div>
+
+
+    <%- include("template/footer.ejs")%>
